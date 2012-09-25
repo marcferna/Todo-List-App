@@ -48,7 +48,11 @@ class TasksController < ApplicationController
       redirect_to user_list_path(current_user, list), :error => t('tasks.controller.not_found') 
     end
     if @task.update_attributes(:done => !@task.done)
-      redirect_to user_list_path(current_user, list), :notice => t('tasks.controller.change.success') 
+      message = t('tasks.controller.change.do')
+      unless @task.done
+        message = t('tasks.controller.change.undo')
+      end
+      redirect_to user_list_path(current_user, list), :notice => message
     else
       redirect_to user_list_path(current_user, list), :error => t('tasks.controller.change.failure') 
     end

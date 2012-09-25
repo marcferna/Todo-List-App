@@ -1,0 +1,26 @@
+en:
+  tasks:
+    general:
+      tasks: "Tasks"
+    views:
+      title: "Title"
+      description: "Description"
+      due_date: "Due Date"
+      no_tasks: "You don't have tasks in this list yet!"
+      day: "day"
+      overdue: "Overdue"
+      delete_confirmation: "Are you sure you want to delete the task?"
+    controller:
+      create:
+        success: "Task created successfully"
+        failure: "Task could not be created"
+      update:
+        success: "Task updated successfully"
+        failure: "Task could not be updated"
+      destroy:
+        success: "Task created successfully"
+        failure: "Task could not be deleted"
+      not_found: "Task could not be dound"
+      change:
+        do: "Task has been marked as done"
+        undo: "Task has been marked as undone"

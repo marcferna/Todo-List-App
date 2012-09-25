@@ -3,8 +3,8 @@ class Task < ActiveRecord::Base
 
   after_save :update_list_completion
 
-  scope :completed, where(:done => true).order('due_date ASC')
-  scope :uncompleted, where(:done => false).order('due_date ASC')
+  scope :completed, where(:done => true).order('due_date IS NULL, due_date ASC')
+  scope :uncompleted, where(:done => false).order('due_date IS NULL, due_date ASC')
 
   attr_accessible  :title, :description, :due_date, :done
 

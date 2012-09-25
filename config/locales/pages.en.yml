@@ -1,0 +1,10 @@
+en:
+  pages:
+    home:
+      title: "Thanx ToDo List App"
+      subtitle: "Simple ToDo list application to get stuff done"
+      sign_up: "Sign Up Now!!"
+    navigation:
+      brand: "Thanx ToDo List"
+      my_lists: "My ToDo Lists"
+

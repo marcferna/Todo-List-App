@@ -1,0 +1,33 @@
+<%
+  overdue = false
+  if !task.due_date.nil? && task.due_date < Date.today
+    overdue = true
+  end
+%>
+<tr <%= "class='error'" if overdue %>>
+  <td>
+    <%= link_to image_tag("checkbox_unchecked.png"), user_list_task_complete_path(current_user, @list, task) %>
+  </td>
+  <td><%= task.title %></td>
+  <td <%= "class='truncated' data-toggle='modal' data-target='#task_#{task.id}' " if task.description.size > 100 %>>
+    <%= truncate(task.description, :length => 100, :omission => '...') %>
+    <div class="modal" id="task_<%= task.id %>" tabindex="-1" role="dialog" style="display:none">
+      <div class="modal-header">
+        <h3><%= task.title %></h3>
+      </div>
+      <div class="modal-body">
+        <p><%= task.description %></p>
+      </div>
+    </div>
+  </td>
+  <td>
+  	<% unless task.due_date.nil? %>
+      <%= task.due_date.strftime("%b %d, %Y") %>
+	    <%= " - " + pluralize((Date.today - task.due_date).to_i, t('tasks.views.day')) + " " + t('tasks.views.overdue') if overdue %>
+	<% end %>
+  </td>
+  <td>
+    <%= link_to raw("<i class='icon-edit'></i> ") + t('edit'), edit_user_list_task_path(current_user, @list, task), :class => "btn btn-small" %>
+    <%= link_to raw("<i class='icon-trash icon-white'></i> ") + t('delete'), user_list_task_path(current_user, @list, task), :class => "btn btn-danger btn-small", :method => :delete, :confirm => t('tasks.views.delete_confirmation') %>
+  </td>
+</tr>

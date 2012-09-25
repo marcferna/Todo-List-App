@@ -25,6 +25,8 @@ class ListsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       redirect_to user_lists_path(current_user), :error => t('lists.controller.not_found') 
     end
+    @completed_tasks = @list.tasks.completed
+    @uncompleted_tasks = @list.tasks.uncompleted
   end
 
   def edit

@@ -1,5 +1,5 @@
 <div class="hero-unit">
-  <h1>Thanx ToDo App</h1>
-  <p>Simple ToDo list application to get stuff done</p>
-  <p><%= link_to "Sign Up Now!", new_user_registration_path, :class => "btn btn-primary btn-large" %></p>
+  <h1><%= t('pages.home.title')%></h1>
+  <p><%= t('pages.home.subtitle')%></p>
+  <p><%= link_to t('pages.home.sign_up'), new_user_registration_path, :class => "btn btn-primary btn-large" %></p>
 </div>

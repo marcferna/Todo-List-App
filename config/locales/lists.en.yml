@@ -1,5 +1,9 @@
 en:
   lists:
+    general:
+      task: "task"
+      completed: "completed"
+      overdue_task: "overdue task"
     controller:
       create:
         success: "List created successfully"
@@ -15,3 +19,4 @@ en:
       new: "New List"
       index:
         no_records: "You don't have any list yet!"
+        delete_confirmation: "Are you sure you want to delete the list and all its tasks?"

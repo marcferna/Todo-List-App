@@ -1,52 +1,24 @@
 <h1><%= @list.title %></h1>
 <p><%= @list.description %></p>
-<h2>Tasks</h2>
-<% unless @list.tasks.uncompleted.empty? && @list.tasks.completed.empty? %>
-  <table class="table">
-    <thead>
-  	  <th>Complete</th>
-  	  <th>Title</th>
-  	  <th>Description</th>
-  	  <th>Due Date</th>
-  	  <th>Actions</th>
-  	</thead>
-  	<tbody>
-      <% @list.tasks.uncompleted.each do |task| %>
-        <tr>
-          <td>
-            <%= link_to "Do", user_list_task_complete_path(current_user, @list, task), :class => "btn" %>
-          </td>
-          <td><%= task.title %></td>
-          <td><%= task.description %></td>
-          <td>
-          	<% unless task.due_date.nil? %>
-      	      <%= task.due_date.strftime("%b %d, %Y") %>
-        	  <%= " - #{(Date.today - task.due_date).to_i} day(s) Overdue" if task.due_date < Date.today %>
-        	<% end %>
-          </td>
-          <td>
-      	    <%= link_to raw("<i class='icon-edit'></i> Edit"), edit_user_list_task_path(current_user, @list, task), :class => "btn" %>
-            <%= link_to raw("<i class='icon-trash icon-white'></i> Delete"), user_list_task_path(current_user, @list, task), :class => "btn btn-danger", :method => :delete, :confirm => "Are you sure?" %>
-          </td>
-        </tr>
-      <% end %>
-      <% @list.tasks.completed.each do |task| %>
-        <tr>
-          <td>
-            <%= link_to "Undo", user_list_task_complete_path(current_user, @list, task), :class => "btn" %>
-          </td>
-          <td><%= task.title %></td>
-          <td><%= task.description %></td>
-          <td>
-      	    <%= task.due_date.strftime("%b %d, %Y") %>
-          </td>
-          <td></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  No tasks yet!
-<% end %>
-</br></br>
+<div class="well">
+  <h2><%= t('tasks.general.tasks') %></h2>
+  <% unless @uncompleted_tasks.empty? && @completed_tasks.empty? %>
+    <table class="table">
+      <thead>
+    	  <th class="span1"></th>
+    	  <th class="span2"><%= t('tasks.views.title') %></th>
+    	  <th class="span4"><%= t('tasks.views.description') %></th>
+    	  <th class="span3"><%= t('tasks.views.due_date') %></th>
+    	  <th class="span2"></th>
+    	</thead>
+    	<tbody>
+          <%= render :partial => 'tasks/uncompleted_task', :as => :task, :collection => @uncompleted_tasks %>
+          <%= render :partial => 'tasks/completed_task', :as => :task, :collection => @completed_tasks %>
+      </tbody>
+    </table>
+  <% else %>
+    <%= t('tasks.views.no_tasks') %>
+  <% end %>
+</div>
+
 <%= link_to raw("<i class='icon-plus icon-white'></i> New Task"), new_user_list_task_path(current_user, @list), :class => "btn btn-primary" %>

@@ -1,0 +1,21 @@
+<tr style="color:gray">
+  <td>
+    <%= link_to image_tag("checkbox_checked.png"), user_list_task_complete_path(current_user, @list, task) %>
+  </td>
+  <td><%= task.title %></td>
+  <td <%= "data-toggle='modal' data-target='#task_#{task.id}' " if task.description.size > 100 %>>
+    <%= truncate(task.description, :length => 100, :omission => '...') %>
+    <div class="modal" id="task_<%= task.id %>" tabindex="-1" role="dialog" style="display:none; color:#333">
+      <div class="modal-header">
+        <h3><%= task.title %></h3>
+      </div>
+      <div class="modal-body">
+        <p><%= task.description %></p>
+      </div>
+    </div>
+  </td>
+  <td>
+    <%= task.due_date.strftime("%b %d, %Y") unless task.due_date.nil? %>
+  </td>
+  <td></td>
+</tr>
