@@ -1,0 +1,19 @@
+<% @lists.each do |list| %>
+  <div class="row">
+  	<div class="span10">
+      <h3><%= link_to list.title, user_list_path(current_user, list) %> 
+        <div class="progress progress-success progress-striped">
+          <div class="bar" style="width: <%= list.completion_score %>%"></div>
+        </div>
+      </h3>
+      <%= list.description %>
+    </div>
+    <div class="span2">
+      <%= link_to raw("<i class='icon-edit'></i> Edit"), edit_user_list_path(current_user, list), :class => "btn" %>
+      <%= link_to raw("<i class='icon-trash icon-white'></i> Delete"), user_list_path(current_user, list), :class => "btn btn-danger", :method => :delete, :confirm => "Are you sure?" %>
+    </div>
+  </div>
+<% end %>
+<h1><%= t("lists.views.index.no_records") %></h1>
+</br></br>
+<p><%= link_to raw("<i class='icon-plus icon-white'></i> ") + t("lists.views.new"), new_user_list_path(current_user), :class => "btn btn-primary" %></p>

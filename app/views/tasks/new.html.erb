@@ -1,0 +1,8 @@
+<%= simple_form_for @task, :url => user_list_tasks_path(current_user, params[:list_id]), :html => {:class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :due_date, :wrapper => :append do %>
+    <%= f.input_field :due_date, :as => :date_picker %><span class="add-on"><i class="icon-calendar"></i></span>
+  <% end %>
+  <%= f.button :submit %>
+<% end %>

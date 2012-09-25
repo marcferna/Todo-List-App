@@ -1,0 +1,17 @@
+en:
+  lists:
+    controller:
+      create:
+        success: "List created successfully"
+        failure: "List could not be created"
+      update:
+        success: "List updated successfully"
+        failure: "List could not be updated"
+      destroy:
+        success: "List created successfully"
+        failure: "List could not be deleted"
+      not_found: "List could not be dound"
+    views:
+      new: "New List"
+      index:
+        no_records: "You don't have any list yet!"
