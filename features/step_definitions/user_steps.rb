@@ -1,7 +1,7 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
+  @visitor ||= {:id => 1, :name => "Testy McUserton", :email => "example@example.com",
     :password => "please", :password_confirmation => "please" }
 end
 
@@ -34,7 +34,7 @@ def sign_up
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
   fill_in "Password confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
+  click_button "Create account"
   find_user
 end
 
@@ -140,7 +140,7 @@ Then /^I should be signed in$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
+  page.should have_content "Sign Up"
   page.should have_content "Login"
   page.should_not have_content "Logout"
 end
@@ -158,19 +158,19 @@ Then /^I should see a successful sign up message$/ do
 end
 
 Then /^I should see an invalid email message$/ do
-  page.should have_content "Email is invalid"
+  page.should have_content "is invalid"
 end
 
 Then /^I should see a missing password message$/ do
-  page.should have_content "Password can't be blank"
+  page.should have_content "can't be blank"
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content "doesn't match confirmation"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content "doesn't match confirmation"
 end
 
 Then /^I should see a signed out message$/ do

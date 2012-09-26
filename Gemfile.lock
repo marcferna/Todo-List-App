@@ -187,7 +187,7 @@ DEPENDENCIES
   jquery-rails
   launchy (~> 2.1.0)
   mysql2 (~> 0.3.11)
-  pg (~> 0.13.2)
+  pg
   rails (= 3.2.3)
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
