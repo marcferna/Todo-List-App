@@ -40,6 +40,7 @@ end
 gem 'jquery-rails'
 gem "devise", "~> 2.1.0"
 gem 'simple_form'
+gem 'newrelic_rpm'
 
 
 

@@ -24,3 +24,9 @@
 # Ignore database.yml
 config/database.yml
 
+# Ignore Sublime files
+*sublime*
+
+# Ignore hiden files
+.*
+
